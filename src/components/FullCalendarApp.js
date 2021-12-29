@@ -2,6 +2,7 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import CalendarHeader from './CalendarHeader';
 
 const events = [
   {
@@ -22,24 +23,29 @@ const events = [
 function FullCalendarApp() {
   return (
     <div className="App">
-      <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        initialView="dayGridMonth"
-        headerToolbar={{
-          center: 'dayGridMonth,timeGridWeek,timeGridDay new',
-        }}
-        customButtons={{
-          new: {
-            text: 'new',
-            click: () => console.log('new event'),
-          },
-        }}
-        events={events}
-        eventColor="red"
-        nowIndicator
-        dateClick={(e) => console.log(e.dateStr)}
-        eventClick={(e) => console.log(e.event.id)}
-      />
+      <div id="calHeader" className="basicHeader">
+        <CalendarHeader />
+      </div>
+      <div className="calendar">
+        <FullCalendar
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          initialView="dayGridMonth"
+          headerToolbar={{
+            center: 'dayGridMonth,timeGridWeek,timeGridDay new',
+          }}
+          customButtons={{
+            new: {
+              text: 'new',
+              click: () => console.log('new event'),
+            },
+          }}
+          events={events}
+          eventColor="red"
+          nowIndicator
+          dateClick={(e) => console.log(e.dateStr)}
+          eventClick={(e) => console.log(e.event.id)}
+        />
+      </div>
     </div>
   );
 }
