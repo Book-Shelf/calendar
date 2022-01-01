@@ -10,7 +10,6 @@ export function DropDownMenu() {
         'font-size': `14px`,
         position: `absolute`,
         right: '0',
-        top: '48px',
         width: `auto`,
         height: `auto`,
         'font-family': `inherit`,

@@ -20,7 +20,7 @@ export function MainMenu(props) {
     if (!props.show) return null;
     
     return (
-        <div ref={ref} className='dd-menu'>
+        <div ref={ref} className='dd-menu' style={{position: `absolute`, right: `0`, top: `48px`}}>
             {props.menu}
         </div>
     );

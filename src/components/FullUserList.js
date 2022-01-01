@@ -53,7 +53,7 @@ function FullUserList() {
         rel="stylesheet"
         />
       </header>
-      <CalendarHeader page="/" />
+      <CalendarHeader page="/Calendar" />
       <h3 className="p-3 text-center">Group Members</h3>
       <div style={{ paddingBottom: "30px" }}>
         <button

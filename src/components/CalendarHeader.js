@@ -15,12 +15,12 @@ function CalendarHeader(props) {
             <div id="HeaderLeftRegion" className="LeftHeader" style={{width: "100%"}}>
                 <div className="Logo">
                     <Link to={props.page}>
-                        <button id="Logobut" className="LogoButton"
+                        <div id="Logobut" className="LogoButton"
                             type="button"
                         >
                             <span className="WebTitleLogo">Plan </span>
                             <span className="WebTitleLogo" style={{color: "#000000"}}>it!</span>
-                        </button>
+                        </div>
                     </Link>
                 </div>
             </div>
