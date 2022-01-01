@@ -1,27 +1,40 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
+import { MainMenu } from './MainMenu';
+import { DropDownMenu } from './DropDownMM';
 
-
-function CalendarHeader() {
+function CalendarHeader(props) {
     const [bgColour, setBgColour] = useState("transparent")
     const buttonStyles={
         background:`${bgColour}`
     }
+    const [showMenu, setShowMenu] = useState(false);
+
     return (
         <div id="navHeader" className="navbHeader" role="banner" style={{height: "48px", 'line-height': "48px"}}>
             <div id="HeaderLeftRegion" className="LeftHeader" style={{width: "100%"}}>
+                <div className="Logo">
+                    <Link to={props.page}>
+                        <button id="Logobut" className="LogoButton"
+                            type="button"
+                        >
+                            <span className="WebTitleLogo">Plan </span>
+                            <span className="WebTitleLogo" style={{color: "#000000"}}>it!</span>
+                        </button>
+                    </Link>
+                </div>
             </div>
             <div id="HeaderRightRegion" className="rightHeader">
-                <div class="Account">
+                <div className="Account">
                     <button id="AccMenu" className="AccountMenuButton" 
-                        style={buttonStyles} aria-expanded="false" type="button"
-                        aria-label="Account menu" aria-controls="Accm_main_body"
+                        style={buttonStyles} type="button"
                         onMouseEnter={() => setBgColour("#AB1B23")}
                         onMouseLeave={() => setBgColour("transparent")}
+                        onClick={() => setShowMenu(true)}
                     >
                         <span className="UserAcc" style={{display: "inline-block", 'font-size': "16px"}}> Konto </span>
                     </button>
-                    <div id="Accm_main_body" className="Accm_dropdownbodyexpanded">
-                    </div>
+                    <MainMenu show={showMenu} onClickOutside={() => setShowMenu(false)} menu={<DropDownMenu />}/>
                 </div>
             </div>
         </div>

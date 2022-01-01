@@ -24,7 +24,7 @@ function FullCalendarApp() {
   return (
     <div className="App">
       <div id="calHeader" className="basicHeader">
-        <CalendarHeader />
+        <CalendarHeader page="/Calendar"/>
       </div>
       <div className="calendar">
         <FullCalendar

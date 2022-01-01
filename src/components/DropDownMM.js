@@ -21,11 +21,10 @@ export function DropDownMenu() {
         'flex-direction': `column`
     };
 
-
     return (
         <div id="dropdownAcc_main_body" className="Accm_dropdownbodyexpanded" style={menuStyle}>
-           <Link to="/AccountSettings" 
-                style={{'text-decoration': `none`, color: `#ffffff`, background: `${color1}`}}
+           <Link to="/Calendar/AccountSettings" className="ddm_ele"
+                style={{background: `${color1}`}}
                 onMouseEnter={() => setColor1("#403F3D")}
                 onMouseLeave={() => setColor1("#1C1C1B")}
             >
@@ -33,8 +32,8 @@ export function DropDownMenu() {
                     Ustawienia
                 </span>
             </Link>
-            <Link to="/AccountSettings" 
-                style={{'text-decoration': `none`, color: `#ffffff`, background: `${color2}`}}
+            <Link to="/" className="ddm_ele"
+                style={{background: `${color2}`}}
                 onMouseEnter={() => setColor2("#403F3D")}
                 onMouseLeave={() => setColor2("#1C1C1B")}
             >
