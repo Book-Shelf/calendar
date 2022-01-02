@@ -91,6 +91,10 @@
   box-sizing: border-box;
 }
 
+.HomePageButton {
+  position: relative;
+}
+
 .ddm_ele {
   border-bottom: 1px solid;
   border-color: #403F3D;

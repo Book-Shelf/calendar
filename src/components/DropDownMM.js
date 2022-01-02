@@ -7,17 +7,17 @@ export function DropDownMenu() {
     
     const menuStyle = {
         background: `#1C1C1B`,
-        'font-size': `14px`,
+        fontSize: `14px`,
         position: `absolute`,
         right: '0',
         width: `auto`,
         height: `auto`,
-        'font-family': `inherit`,
-        'box-sizing': `border-box`,
-        'z-index': `2`,
+        fontFamily: `inherit`,
+        boxSizing: `border-box`,
+        zIndex: `2`,
         display: `flex`,
-        'border-spacing': `0`,
-        'flex-direction': `column`
+        borderSpacing: `0`,
+        flexDirection: `column`
     };
 
     return (
