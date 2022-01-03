@@ -5,6 +5,8 @@ import AccountSettings from './components/AccountSettings';
 import FullUserList from './components/FullUserList';
 import { SignUp } from './components/SignUp';
 import './App.css';
+import Login from './components/login/Login'
+import Registration from './components/login/Registration'
 
 function App() {
   return (
