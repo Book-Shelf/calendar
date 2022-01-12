@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import CalendarHeader from "./CalendarHeader";
 
 function FullUserList() {
   let [membersState, setMembers] = useState({

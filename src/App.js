@@ -16,7 +16,6 @@ function App() {
           <Route path="/SignUp" element={<Registration />} />
           <Route path="/Calendar" element={<FullCalendarApp />} />
           <Route path="Calendar/AccountSettings" element={<AccountSettings />} />
-          <Route path="Calendar/FullUserList" element={<FullUserList /> } />
         </Routes>
     </div>
   );
