@@ -5,25 +5,136 @@ function AccountSettings() {
   return (
       <div className="App">
         <CalendarHeader page="/Calendar"/>
-        <div className="SettingSection" style={{ display: `flex`}}>
-          <div className="SettingsColumn" style={{
-            width: `100%`,
-            height: `100%`,
-            alignItems: `center`,
-            paddingLeft: `200px`,
-            paddingRight: `200px`,
-            display: `flex`,
-            flexDirection: `column`
-          }}>
-            <h1>Ustawienia</h1>
-            <form>
-              <label for="userName" style={{paddingRight: `5px`}}>Nazwa uzytkownika:</label>
-              <input type="text" id="userName" name="userName"></input><br></br><br></br>
-              <label for="password" style={{paddingRight: `5px`}}>Haslo:</label>
-              <input type="password" id="password" name="password"></input>
-            </form>
-            <button style={{position: `relative`, top: `10px`}}>Zapisz</button>
-
+        <div className="main_content">
+          <div className="settings_view" >
+            <div className="container_settings">
+              <h1>Account</h1>
+              <article className="profile">
+                <div className="account_info">
+                  <div className="account_username">
+                    <div className="formgroup">
+                      <div className="username_block">
+                        <label for="username" style={{
+                          lineHeight: `40px`,
+                          fontWeight: `600`,
+                          marginBottom: `5px`,
+                          display: `block`,
+                          fontSize: `14px`
+                        }}>
+                          Your Username
+                          <span className="sub_help">
+                            (This is how users will see you)
+                          </span>
+                        </label>
+                        <div className="input-wrapper">
+                          <p className="username-container">
+                            <span className="username-text" style={{
+                              paddingLeft: `8px`,
+                              fontSize: `20px`
+                            }}>
+                              Kaprioszka
+                            </span>
+                            <button className="usernameButton">
+                              Edit
+                            </button>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="account_username">
+                    <div className="formgroup">
+                      <div className="username_block">
+                        <label for="username" style={{
+                          lineHeight: `40px`,
+                          fontWeight: `600`,
+                          marginBottom: `5px`,
+                          display: `block`,
+                          fontSize: `14px`
+                        }}>
+                          Email Address
+                        </label>
+                        <div className="input-wrapper">
+                          <p className="username-container">
+                            <span className="username-text" style={{
+                              paddingLeft: `8px`,
+                              fontSize: `20px`
+                            }}>
+                              Kaprioszka
+                            </span>
+                            <button className="usernameButton">
+                              Edit
+                            </button>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="account_username">
+                    <div className="formgroup">
+                      <div className="username_block">
+                        <label for="username" style={{
+                          lineHeight: `40px`,
+                          fontWeight: `600`,
+                          marginBottom: `5px`,
+                          display: `block`,
+                          fontSize: `14px`
+                        }}>
+                          Password
+                          <span className="sub_help">
+                            (You can change your password here)
+                          </span>
+                        </label>
+                        <div className="input-wrapper">
+                          <p className="username-container">
+                            <span className="username-text" style={{
+                              paddingLeft: `8px`,
+                              fontSize: `20px`
+                            }}>
+                              Kaprioszka
+                            </span>
+                            <button className="usernameButton">
+                              Edit
+                            </button>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="account_username">
+                    <div className="formgroup">
+                      <div className="username_block">
+                        <label for="username" style={{
+                          lineHeight: `40px`,
+                          fontWeight: `600`,
+                          marginBottom: `5px`,
+                          display: `block`,
+                          fontSize: `14px`
+                        }}>
+                          Time?
+                          <span className="sub_help">
+                            (Chosen time)
+                          </span>
+                        </label>
+                        <div className="input-wrapper">
+                          <p className="username-container">
+                            <span className="username-text" style={{
+                              paddingLeft: `8px`,
+                              fontSize: `20px`
+                            }}>
+                              Kaprioszka
+                            </span>
+                            <button className="usernameButton">
+                              Edit
+                            </button>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
           </div>
         </div>  
       </div>
