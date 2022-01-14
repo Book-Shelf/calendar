@@ -25,6 +25,8 @@ function AccountSettings() {
     background: `${buttonTimeBgColor}`    
   }
 
+  const [changeName, setChangeName] = useState(false)
+
   return (
       <div className="App">
         <CalendarHeader page="/Calendar"/>
@@ -49,7 +51,9 @@ function AccountSettings() {
                             (This is how users will see you)
                           </span>
                         </label>
-                        <div className="input-wrapper">
+                        <div className="input-wrapper" style={{
+                          display: `${changeName ? "none" : "block"}`
+                        }}>
                           <p className="username-container">
                             <span className="username-text" style={{
                               paddingLeft: `8px`,
@@ -61,10 +65,15 @@ function AccountSettings() {
                               type="button" style={buttonUserStyle}
                               onMouseEnter={() => setButtonUserBgColor("#1e2b37")}
                               onMouseLeave={() => setButtonUserBgColor("#2c3e50")}
+                              onClick={() => setChangeName("true")}
                             >
                               Edit
                             </button>
                           </p>
+                        </div>
+                        <div className="ChangeUsername" style={{
+                          display: `${changeName ? "block" : "none"}`}}>
+                            O NIE!
                         </div>
                       </div>
                     </div>
@@ -87,7 +96,7 @@ function AccountSettings() {
                               paddingLeft: `8px`,
                               fontSize: `20px`
                             }}>
-                              Kaprioszka
+                              Kaprioszka@gmail.com
                             </span>
                             <button className="usernameButton"
                               type="button" style={buttonEmailStyle}
@@ -151,10 +160,10 @@ function AccountSettings() {
                               paddingLeft: `8px`,
                               fontSize: `20px`
                             }}>
-                              Kaprioszka
+                              Heuropejiski
                             </span>
                             <button className="usernameButton"
-                              type="button" style={buttonEmailStyle}
+                              type="button" style={buttonTimeStyle}
                               onMouseEnter={() => setButtonTimeBgColor("#1e2b37")}
                               onMouseLeave={() => setButtonTimeBgColor("#2c3e50")}
                             >
