@@ -1,0 +1,70 @@
+.container_settings {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+    padding-left: 300px;
+    padding-right: 300px;
+    box-sizing: border-box;
+}
+
+.profile {
+
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.username_block {
+    width: 62.5%;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+}
+
+.account_username {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #C2C7D0;
+}
+
+.formgroup .input-wrapper{
+    margin: 0;
+}
+
+.sub_help {
+    display: block;
+    margin-top: -20px;
+    color: #979faf;
+    font-size: 90%;
+}
+
+.username-container {
+    height: 36px;
+    margin: 0 0 10px 0;
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+}
+
+.usernameButton, .input_Button {
+    margin-left: 10px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #2c3e50;
+    border-color: transparent;
+    border-radius: 2.5px;
+    font-size: 16px;
+    padding: 6px 10px 6px 10px;
+    display: inline-block;
+}
+
+.input_Button {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.username_input {
+    border: 1px solid #c2C7d0;
+    border-radius: 5px;
+    margin: 0 0 10px 0;
+    box-sizing: border-box;
+    display: inline-block;
+}
