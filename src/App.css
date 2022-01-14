@@ -1,16 +1,110 @@
+.basicHeader {
+  height: 48px;
+}
+
+.navbHeader {
+  background-color: #C71F28;
+  display: flex;
+  width: 100%;
+  line-height: 48px;
+  border-spacing: 0;
+}
+
+.Logo {
+  width: auto;
+  height: inherit;
+  color: #ffffff;
+
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.rightHeader, .LeftHeader {
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 100%;
+}
+
+.Account, .Logo {
+  height: 100%;
+  line-height: 48px;
+  display: flex;
+  position: relative;
+}
+
+.LogoButton {
+  color: #ffffff;
+  border-width: 0;
+  border: 0;
+  border-style: none;
+  width: auto; 
+  height: auto;
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
+  padding: 0px 20px 0px 20px;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+  background-color: inherit;
+  white-space: pre-wrap;
+  line-height: 48px;
+}
+
+.WebTitleLogo {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 800;
+
+}
+
+.AccountMenuButton {
+  color: #ffffff;
+  border-width: 0;
+  border-style: none;
+  width: auto;
+  height: auto;
+  box-sizing: border-box;
+
+  display: block;
+  margin: 0;
+  padding:0 20px 0 20px;
+  min-width: 48px;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.ddButton {
+  color: #ffffff;
+  border-width: 0;
+  border-style: none;
+  cursor: pointer;
+  margin: 0;
+  font-size: 14px;
+  padding: 10px 15px 10px 15px;
+  box-sizing: border-box;
+}
+
+.HomePageButton {
+  position: relative;
+}
+
+.ddm_ele {
+  border-bottom: 1px solid;
+  border-color: #403F3D;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -24,15 +118,3 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

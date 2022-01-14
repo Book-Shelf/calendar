@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CalendarHeader from "./CalendarHeader.js";
 
 function FullUserList() {
   let [membersState, setMembers] = useState({
@@ -9,6 +10,16 @@ function FullUserList() {
       { nick: "Marcysia123", email: "xd4@dd.com", role: "Member" },
     ],
   });
+
+  let allUsers = [
+    { nick: "Szymek123", email: "xd@dd.com", role: "Administrator" },
+    { nick: "Paulinka123", email: "xd2@dd.com", role: "Moderator" },
+    { nick: "Piotrek123", email: "xd3@dd.com", role: "Member" },
+    { nick: "Marcysia123", email: "xd4@dd.com", role: "Member" },
+    { nick: "jorge", email: "jorge@maxi.com", role: "Member" },
+    { nick: "angie", email: "mat@gmail.com", role: "Member" },
+    { nick: "hah", email: "haha@wp.pl", role: "Member" },
+  ];
 
   const promoteMember = (user) => {
     const { members } = membersState;
@@ -32,27 +43,49 @@ function FullUserList() {
 
   const handleAddMembersClick = () => {
     const name = prompt("Enter nickname: ");
+    let canAdd = false;
 
-    if ((name !== null) & (name.length > 0)) {
-      setMembers({
-        members: [
-          ...members,
-          { nick: name, email: "123@xd.com", role: "Member" },
-        ],
-      });
+    window.postMessage("Hi");
+
+    allUsers.map((user) => {
+      if (user.nick === name) {
+        setMembers({
+          members: [
+            ...members,
+            { nick: name, email: "123@xd.com", role: "Member" },
+          ],
+        });
+        canAdd = true;
+      }
+    });
+    if (canAdd === false && name != null) {
+      window.alert("This user does not exist or was already added to group");
     }
   };
 
   const handleDeleteMemberClick = (user) => {
     const { members } = membersState;
-    let filteredArray = members.filter((member) => member !== user);
-    setMembers({ members: filteredArray });
+    if (
+      window.confirm(
+        `Are you sure you want to delete this member: '${user.nick}'?`
+      )
+    ) {
+      let filteredArray = members.filter((member) => member !== user);
+      setMembers({ members: filteredArray });
+    }
   };
 
   const { members } = membersState;
 
   return (
     <div className="App">
+      <header>
+        <link
+        href="//netdna.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        rel="stylesheet"
+        />
+      </header>
+      <CalendarHeader page="/Calendar" />
       <h3 className="p-3 text-center">Group Members</h3>
       <div style={{ paddingBottom: "30px" }}>
         <button
@@ -80,7 +113,7 @@ function FullUserList() {
         <table className="table table-hover">
           <thead
             className="thead-dark"
-            style={{ position: "sticky", top: "0", zIndex: "1" }}
+            style={{ position: "sticky", top: "0" }}
           >
             <tr>
               <th>Nickname</th>
