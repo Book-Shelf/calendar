@@ -1,7 +1,30 @@
 import CalendarHeader from './CalendarHeader';
+import React, {useState} from 'react';
 import "./AccountSettings.css";
 
 function AccountSettings() {
+
+  const [buttonUserBgColor, setButtonUserBgColor] = useState("#2c3e50");
+  const [buttonEmailBgColor, setButtonEmailBgColor] = useState("#2c3e50");
+  const [buttonPassBgColor, setButtonPassBgColor] = useState("#2c3e50");
+  const [buttonTimeBgColor, setButtonTimeBgColor] = useState("#2c3e50");
+
+  const buttonUserStyle={
+    background: `${buttonUserBgColor}`    
+  }
+
+  const buttonEmailStyle={
+    background: `${buttonEmailBgColor}`    
+  }
+
+  const buttonPassStyle={
+    background: `${buttonPassBgColor}`    
+  }
+
+  const buttonTimeStyle={
+    background: `${buttonTimeBgColor}`    
+  }
+
   return (
       <div className="App">
         <CalendarHeader page="/Calendar"/>
@@ -34,7 +57,11 @@ function AccountSettings() {
                             }}>
                               Kaprioszka
                             </span>
-                            <button className="usernameButton">
+                            <button className="usernameButton"
+                              type="button" style={buttonUserStyle}
+                              onMouseEnter={() => setButtonUserBgColor("#1e2b37")}
+                              onMouseLeave={() => setButtonUserBgColor("#2c3e50")}
+                            >
                               Edit
                             </button>
                           </p>
@@ -62,7 +89,11 @@ function AccountSettings() {
                             }}>
                               Kaprioszka
                             </span>
-                            <button className="usernameButton">
+                            <button className="usernameButton"
+                              type="button" style={buttonEmailStyle}
+                              onMouseEnter={() => setButtonEmailBgColor("#1e2b37")}
+                              onMouseLeave={() => setButtonEmailBgColor("#2c3e50")}
+                            >
                               Edit
                             </button>
                           </p>
@@ -87,13 +118,11 @@ function AccountSettings() {
                         </label>
                         <div className="input-wrapper">
                           <p className="username-container">
-                            <span className="username-text" style={{
-                              paddingLeft: `8px`,
-                              fontSize: `20px`
-                            }}>
-                              Kaprioszka
-                            </span>
-                            <button className="usernameButton">
+                            <button className="usernameButton"
+                              type="button" style={buttonPassStyle}
+                              onMouseEnter={() => setButtonPassBgColor("#1e2b37")}
+                              onMouseLeave={() => setButtonPassBgColor("#2c3e50")}
+                            >
                               Edit
                             </button>
                           </p>
@@ -124,7 +153,11 @@ function AccountSettings() {
                             }}>
                               Kaprioszka
                             </span>
-                            <button className="usernameButton">
+                            <button className="usernameButton"
+                              type="button" style={buttonEmailStyle}
+                              onMouseEnter={() => setButtonTimeBgColor("#1e2b37")}
+                              onMouseLeave={() => setButtonTimeBgColor("#2c3e50")}
+                            >
                               Edit
                             </button>
                           </p>

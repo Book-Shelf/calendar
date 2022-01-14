@@ -3,18 +3,15 @@
     margin-top: 20px;
     margin-bottom: 20px;
     display: block;
-    padding-left: 200px;
-    padding-right: 200px;
-    /* alignItems: `center`,
-    paddingLeft: `200px`,
-    paddingRight: `200px`,
-    display: `flex`,
-    flexDirection: `column`  */
+    padding-left: 300px;
+    padding-right: 300px;
+    box-sizing: border-box;
 }
 
 .profile {
 
     text-align: left;
+    box-sizing: border-box;
 }
 
 .username_block {
@@ -26,7 +23,7 @@
 .account_username {
     padding-bottom: 10px;
     margin-bottom: 20px;
-    border-bottom: 1px solid #C2C7D0
+    border-bottom: 1px solid #C2C7D0;
 }
 
 .formgroup .input-wrapper{
@@ -51,7 +48,6 @@
     margin-left: 10px;
     cursor: pointer;
     color: #fff;
-    background-color: #2c3e50;
     border-color: transparent;
     border-radius: 2.5px;
     font-size: 16px;
