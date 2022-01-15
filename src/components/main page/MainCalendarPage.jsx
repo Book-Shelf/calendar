@@ -73,7 +73,6 @@ export default class DemoApp extends React.Component {
           <div style={{float: "right"}}>
             <GroupList groupInstances={this.state.groupInstances} />
           </div>
-          <EventPreview eventInstance={this.state.eventInstance} />
         </div>
       </div>
     )
