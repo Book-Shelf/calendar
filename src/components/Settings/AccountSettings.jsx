@@ -1,12 +1,14 @@
 import CalendarHeader from '../CalendarHeader';
 import React, {useState} from 'react';
 import "./AccountSettings.css";
-import { ChangeName } from './changeName';
+import { ChangeName } from './ChangeName';
 import { EditButton } from './EditButton';
+import { ChangePassword } from './ChangePassword';
 
 function AccountSettings() {
   const [changeName, setChangeName] = useState(false);
   const [changeEmail, setChangeEmail] = useState(false);
+  const [changePass, setChangePass] = useState(false);
   const [username, setUsername] = useState("Kaprioszka");
   const [email, setEmail] = useState("Kaprioszka@gmail.com");
 
@@ -21,7 +23,7 @@ function AccountSettings() {
                 <div className="account_info">
                   <div className="account_username">
                     <div className="formgroup">
-                      <div className="username_block">
+                      <div className="account_block">
                         <label for="username" style={{
                           lineHeight: `40px`,
                           fontWeight: `600`,
@@ -53,7 +55,7 @@ function AccountSettings() {
                   </div>
                   <div className="account_username">
                     <div className="formgroup">
-                      <div className="username_block">
+                      <div className="account_block">
                         <label for="username" style={{
                           lineHeight: `40px`,
                           fontWeight: `600`,
@@ -78,10 +80,10 @@ function AccountSettings() {
                       </div>
                     </div>
                   </div>
-                  <div className="account_username">
+                  <div className="account_password">
                     <div className="formgroup">
-                      <div className="username_block">
-                        <label for="username" style={{
+                      <div className="account_block">
+                        <label style={{
                           lineHeight: `40px`,
                           fontWeight: `600`,
                           marginBottom: `5px`,
@@ -93,17 +95,18 @@ function AccountSettings() {
                             (You can change your password here)
                           </span>
                         </label>
-                        <div className="input-wrapper">
+                        <div className="input-wrapper" style={{display: `${changePass ? "none" : "block"}`}}>
                           <p className="username-container">
-                          <EditButton />
+                          <EditButton handleOnClick={() => setChangePass(true)}/>
                           </p>
                         </div>
+                        <ChangePassword isChanging={changePass} handleCancelClick={() => setChangePass(false)}/>
                       </div>
                     </div>
                   </div>
                   <div className="account_username">
                     <div className="formgroup">
-                      <div className="username_block">
+                      <div className="account_block">
                         <label for="username" style={{
                           lineHeight: `40px`,
                           fontWeight: `600`,
