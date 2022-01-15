@@ -69,7 +69,7 @@ function AccountSettings() {
                 <div className="account_username">
                   <div className="formgroup">
                     <div className="account_block">
-                      <label for="username" style={{
+                      <label style={{
                         lineHeight: `40px`,
                         fontWeight: `600`,
                         marginBottom: `5px`,
@@ -98,10 +98,10 @@ function AccountSettings() {
                     </div>
                   </div>
                 </div>
-                <div className="account_username">
+                <div className="account_email">
                   <div className="formgroup">
                     <div className="account_block">
-                      <label for="username" style={{
+                      <label style={{
                         lineHeight: `40px`,
                         fontWeight: `600`,
                         marginBottom: `5px`,
@@ -125,34 +125,10 @@ function AccountSettings() {
                     </div>
                   </div>
                 </div>
-                <div className="account_password">
+                <div className="account_timezone">
                   <div className="formgroup">
                     <div className="account_block">
                       <label style={{
-                        lineHeight: `40px`,
-                        fontWeight: `600`,
-                        marginBottom: `5px`,
-                        display: `block`,
-                        fontSize: `14px`
-                      }}>
-                        Password
-                        <span className="sub_help">
-                          (You can change your password here)
-                        </span>
-                      </label>
-                      <div className="input-wrapper" style={{ display: `${changePass ? "none" : "block"}` }}>
-                        <p className="username-container">
-                          <EditButton handleOnClick={() => setChangePass(true)} />
-                        </p>
-                      </div>
-                      <ChangePassword isChanging={changePass} handleCancelClick={() => setChangePass(false)} />
-                    </div>
-                  </div>
-                </div>
-                <div className="account_username">
-                  <div className="formgroup">
-                    <div className="account_block">
-                      <label for="username" style={{
                         lineHeight: `40px`,
                         fontWeight: `600`,
                         marginBottom: `5px`,
@@ -193,6 +169,30 @@ function AccountSettings() {
                           setChangeTime(false);
                         }}
                       />
+                    </div>
+                  </div>
+                </div>
+                <div className="account_password">
+                  <div className="formgroup">
+                    <div className="account_block">
+                      <label style={{
+                        lineHeight: `40px`,
+                        fontWeight: `600`,
+                        marginBottom: `5px`,
+                        display: `block`,
+                        fontSize: `14px`
+                      }}>
+                        Password
+                        <span className="sub_help">
+                          (You can change your password here)
+                        </span>
+                      </label>
+                      <div className="input-wrapper" style={{ display: `${changePass ? "none" : "block"}` }}>
+                        <p className="username-container">
+                          <EditButton handleOnClick={() => setChangePass(true)} />
+                        </p>
+                      </div>
+                      <ChangePassword isChanging={changePass} handleCancelClick={() => setChangePass(false)} />
                     </div>
                   </div>
                 </div>

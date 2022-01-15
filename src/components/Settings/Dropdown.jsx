@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FontAwesome from "react-fontawesome";
+import "./Dropdown.css";
 
 class Dropdown extends React.Component {
     constructor(props) {
