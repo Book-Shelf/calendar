@@ -8,7 +8,7 @@ export function ChangeName(props) {
     return (
         <div className="ChangeUsername" style={{
             display: `${props.isChanging ? "inline-block" : "none"}`}}>
-              <input className="username_input" type="text" placeholder={props.text} />
+              <input className="username_input" type={props.type} placeholder={props.text} />
               <button className="input_Button" style={{
                 background: `${buttonSaveBgColor}`}}
                 onMouseEnter={() => setButtonSaveBgColor("#1e2b37")}

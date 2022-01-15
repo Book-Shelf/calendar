@@ -1,17 +1,5 @@
 import React, {useState} from "react";
-
-function useInput(defaultValue)  {
-    const [value, setValue] = useState(defaultValue);
-
-    function onChange(e) {
-        setValue(e.target.value);
-    }
-
-    return {
-        value,
-        onChange,
-    };
-}
+import { useInput } from "./settingsUtils"
 
 export function ChangePassword(props) {
     const currentProps = useInput();
