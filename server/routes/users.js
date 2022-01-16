@@ -7,7 +7,9 @@ const jwt = require('jsonwebtoken')
 const JWT_KEY = '@#dfsad324dalkvoapf;faoskdmcap[wldap[wldsa;,cawe@#%!@#DA';
 
 const mongodbURL = 'mongodb+srv://blog1:1234@cluster0.34o8a.mongodb.net/dbtest?retryWrites=true&w=majority'; //you have to install mongoDB and host on localhost
-mongoose.connect(mongodbURL,{useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(mongodbURL,{useNewUrlParser: true, useUnifiedTopology: true}, ()=>{
+  console.log('connected to DB');
+});
 
 router.post('/register', async function(req, res) {  
   const {username, email, textPassword} = req.body;
