@@ -4,8 +4,10 @@ const mongoose = require('mongoose')
 const User = require('../model/userModel');
 const bcrypt = require('bcryptjs');
 
-const mongodbURL = 'mongodb://localhost:27017/register'; //you have to install mongoDB and host on localhost
-mongoose.connect(mongodbURL,{useNewUrlParser: true, useUnifiedTopology: true});
+const mongodbURL = 'mongodb+srv://blog1:1234@cluster0.34o8a.mongodb.net/dbtest?retryWrites=true&w=majority'; //you have to install mongoDB and host on localhost
+mongoose.connect(mongodbURL,{useNewUrlParser: true, useUnifiedTopology: true}, ()=>{
+  console.log('connected to DB');
+});
 
 router.post('/register', async function(req, res) {  
   const {username, email, textPassword} = req.body;

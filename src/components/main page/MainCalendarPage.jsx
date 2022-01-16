@@ -43,7 +43,13 @@ export default class DemoApp extends React.Component {
 
   render() {
     return (
-      <div className='demo-app'>
+      <div className='demo-app' style={{
+				width: "100%",
+				position: "absolute",
+				top: "0",
+				left: "0",
+				margin: "0",
+			}}>
         <CalendarHeader page="/Calendar"/>
         <div className='demo-app-main'>
           <FullCalendar
