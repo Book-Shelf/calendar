@@ -43,10 +43,10 @@ function NotLoggedMenu(props) {
             color: `#ffffff`,
         }}>
             <Link to="/">
-                <HPButton text="Zaloguj się" />
+                <HPButton text="Login" />
             </Link>
             <Link to="/SignUp">
-                <HPButton text="Zarejestruj się" />
+                <HPButton text="Sign Up" />
             </Link>
         </div>
     );
