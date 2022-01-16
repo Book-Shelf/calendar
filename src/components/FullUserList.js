@@ -58,7 +58,7 @@ function FullUserList() {
 		});
 		if (canAdd === false && name != null) {
 			window.alert("This user does not exist or was already added to group");
-		}
+		}    
 	};
 
 	const handleDeleteMemberClick = (user) => {
@@ -120,7 +120,7 @@ function FullUserList() {
 				>
 					<table
 						className="table table-hover"
-						style={{ width: "50%", alignItems: "center", margin: "auto" }}
+						style={{ minWidth: "600px",width: "60%", alignItems: "center", margin: "auto" }}
 					>
 						<thead
 							className="thead-dark"
@@ -172,10 +172,11 @@ function FullUserList() {
 															marginRight: "10px",
 														}}
 													>
-														Delete
+														{/* Delete */}
+                            <img src="https://img.icons8.com/pastel-glyph/50/000000/trash.png" height="30" alt="Delete"/> Delete
 													</button>
 													<button
-														className="btn btn-outline-dark"
+														className="btn btn-outline-light"
 														onClick={() => {
 															demoteMember(member);
 														}}
@@ -185,7 +186,7 @@ function FullUserList() {
 															marginLeft: "10px",
 														}}
 													>
-														Demote
+														<img src="https://img.icons8.com/ios/50/000000/star-half.png" height="30" alt="Demote"/>Demote
 													</button>
 												</td>
 											</tr>
@@ -209,7 +210,8 @@ function FullUserList() {
 															marginRight: "10px",
 														}}
 													>
-														Delete
+														{/* Delete */}
+                            <img src="https://img.icons8.com/pastel-glyph/50/000000/trash.png" height="30" alt="Delete"/> Delete
 													</button>
 													<button
 														className="btn btn-outline-warning"
@@ -222,7 +224,8 @@ function FullUserList() {
 															marginLeft: "10px",
 														}}
 													>
-														Promote
+														{/* Promote */}
+                            <img src="https://img.icons8.com/ios/50/000000/star.png" height="30" alt="Promote"/> Promote
 													</button>
 												</td>
 											</tr>
