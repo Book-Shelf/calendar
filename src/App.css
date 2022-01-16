@@ -118,3 +118,13 @@
   color: white;
 }
 
+.demo-app-main {
+  display: flex;
+  justify-content: space-between;
+  max-height: calc(100vh - 48px);
+}
+
+.fc {
+  flex: 1;
+}
+

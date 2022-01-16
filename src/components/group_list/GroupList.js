@@ -3,12 +3,10 @@ import GroupPlaque from './GroupPlaque'
 
 export default function GroupList( props ) {
     return (
-        <span>
-            <div style={{overflow: 'auto', height: 600, width: 'auto', float: 'left', borderRadius: 10, backgroundColor: '#C71F28'}}>
-                {props.groupInstances.map((groupInstance, index) => {
-                    return <GroupPlaque key={index} groupInstance={groupInstance} />
-                })}
-            </div>
-        </span>
+        <div style={{overflow: 'auto', height: `Calc(100vh - 48px)`, width: 'auto', float: 'left', backgroundColor: '#C71F28'}}>
+            {props.groupInstances.map((groupInstance, index) => {
+                return <GroupPlaque key={index} groupInstance={groupInstance} />
+            })}
+        </div>
     )
 }

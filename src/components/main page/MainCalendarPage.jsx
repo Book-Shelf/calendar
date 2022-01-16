@@ -45,7 +45,7 @@ export default class DemoApp extends React.Component {
     return (
       <div className='demo-app'>
         <CalendarHeader page="/Calendar"/>
-        <div className='demo-app-main' style={{display: "flex"}}>
+        <div className='demo-app-main'>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
@@ -70,7 +70,7 @@ export default class DemoApp extends React.Component {
             eventRemove={function(){}}
             */
           />
-          <div style={{float: "right"}}>
+          <div className="Grouplist-wrapper" style={{float: "right"}}>
             <GroupList groupInstances={this.state.groupInstances} />
           </div>
         </div>
