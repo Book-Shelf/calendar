@@ -5,12 +5,40 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import CalendarHeader from "../CalendarHeader";
+import GroupList from "../group_list/GroupList";
+import EventPreview from "../event/EventPreview";
 
 export default class DemoApp extends React.Component {
 
   state = {
     weekendsVisible: true,
-    currentEvents: []
+    currentEvents: [],
+    eventInstance: {
+      name: 'event1',
+      description: 'some event',
+      date_info: '12.03.2022 15:00 - 13.03.2022 03:00'
+    },
+    groupInstances: [
+      {name: 'group1', status: 'a'}, 
+      {name: 'group2', status: 'm'}, 
+      {name: 'group3', status: 'u'}, 
+      {name: 'group4', status: 'u'}, 
+      {name: 'group5', status: 'u'}, 
+      {name: 'group6', status: 'a'}, 
+      {name: 'group7', status: 'u'}, 
+      {name: 'group8', status: 'm'}, 
+      {name: 'group9', status: 'm'}, 
+      {name: 'group10', status: 'm'}, 
+      {name: 'group11', status: 'a'}, 
+      {name: 'group12', status: 'm'}, 
+      {name: 'group13', status: 'u'}, 
+      {name: 'group14', status: 'u'}, 
+      {name: 'group15', status: 'u'}, 
+      {name: 'group16', status: 'a'}, 
+      {name: 'group17', status: 'u'}, 
+      {name: 'group18', status: 'm'}, 
+      {name: 'group19', status: 'm'}
+    ]
   }
 
   render() {
@@ -42,6 +70,9 @@ export default class DemoApp extends React.Component {
             eventRemove={function(){}}
             */
           />
+          <div className="Grouplist-wrapper" style={{float: "right"}}>
+            <GroupList groupInstances={this.state.groupInstances} />
+          </div>
         </div>
       </div>
     )
