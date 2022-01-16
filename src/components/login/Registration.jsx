@@ -8,10 +8,12 @@ class Registration extends React.Component {
     username: "",
     email: "",
     textPassword: "",
+    wrongCredentials: "",
+    route: "",
+    color: "red",
   };
 
   handleSubmit = async (event) => {
-    const { navigation } = this.props;
     event.preventDefault();
     const result = await fetch("http://localhost:3001/users/register", {
       method: "POST",
@@ -25,9 +27,16 @@ class Registration extends React.Component {
     //handle login action
     if (result.status === "ok") {
       //successful registration
-      navigation("/");
+      console.log("sucess");
+      this.setState({
+        wrongCredentials: "You created an account! You can login now!",
+        color: "green",
+      });
     } else {
-      alert("Error: " + result.error);
+      console.log("fail", result.error);
+      this.setState({
+        wrongCredentials: "Account with this email or username already exists.",
+      });
     }
   };
 
@@ -76,6 +85,15 @@ class Registration extends React.Component {
                 Sign up
               </button>
             </form>
+            <p
+              style={{
+                color: this.state.color,
+                fontWeight: "500",
+                fontSize: "20px",
+              }}
+            >
+              {this.state.wrongCredentials}
+            </p>
           </div>
         </div>
       </div>
