@@ -17,7 +17,7 @@ export function ChangeTime(props) {
 
     return (
         <div className="ChangeTime" style={{
-            display: `${props.isChanging ? "inline-block" : "none"}`}}>
+            display: `${props.isChanging ? "inline-flex" : "none"}`}}>
                 <Dropdown
                     title="Select timezone"
                     list={props.times}

@@ -91,10 +91,19 @@ function AccountSettings() {
                           }}>
                             {username}
                           </span>
-                          <EditButton handleOnClick={() => setChangeName("true")} />
+                          <EditButton 
+                            handleOnClick={() => setChangeName("true")} 
+                          />
                         </p>
                       </div>
-                      <ChangeName type="text" isChanging={changeName} handleCancelClick={() => setChangeName(false)} text={username} />
+                      <ChangeName 
+                        type="text" 
+                        isChanging={changeName} 
+                        handleCancelClick={() => setChangeName(false)} 
+                        setState={setUsername}
+                        state={username}
+                        placeholder="Enter username" 
+                      />
                     </div>
                   </div>
                 </div>
@@ -121,7 +130,14 @@ function AccountSettings() {
                           <EditButton handleOnClick={() => setChangeEmail("true")} />
                         </p>
                       </div>
-                      <ChangeName type="email" isChanging={changeEmail} handleCancelClick={() => setChangeEmail(false)} text={email} />
+                      <ChangeName 
+                        type="email"
+                        isChanging={changeEmail}
+                        handleCancelClick={() => setChangeEmail(false)}
+                        placeholder="example@gmail.com"
+                        setState={setEmail}
+                        state={email}
+                      />
                     </div>
                   </div>
                 </div>
