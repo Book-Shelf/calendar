@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import CalendarHeader from "../CalendarHeader";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 class Registration extends React.Component {
   state = {
@@ -11,6 +11,7 @@ class Registration extends React.Component {
   };
 
   handleSubmit = async (event) => {
+    const { navigation } = this.props;
     event.preventDefault();
     const result = await fetch("http://localhost:3001/users/register", {
       method: "POST",
@@ -24,9 +25,9 @@ class Registration extends React.Component {
     //handle login action
     if (result.status === "ok") {
       //successful registration
-      console.log("sucess");
+      navigation("/");
     } else {
-      console.log("fail", result.error);
+      alert("Error: " + result.error);
     }
   };
 
@@ -65,7 +66,7 @@ class Registration extends React.Component {
               <div className="form-group">
                 <label htmlFor="password">Password:</label>
                 <input
-                  type="text"
+                  type="password"
                   name="textPassword"
                   placeholder="password"
                   onChange={this.handleChange}
@@ -82,4 +83,8 @@ class Registration extends React.Component {
   }
 }
 
-export default Registration;
+export default function (props) {
+  const navigation = useNavigate();
+
+  return <Registration {...props} navigation={navigation} />;
+}
