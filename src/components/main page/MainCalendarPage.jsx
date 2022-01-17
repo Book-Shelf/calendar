@@ -9,15 +9,24 @@ import GroupList from "../group_list/GroupList";
 import EventPreview from "../event/EventPreview";
 
 export default class DemoApp extends React.Component {
-
+constructor(props){
+  super(props)
+  this.calendar = React.createRef();
+  this.state.groupInstances.forEach(element => {
+    element.checked=true;
+  });
+  this.state.eventInstance.forEach(element => {
+    element.display="auto";
+  });
+}
   state = {
     weekendsVisible: true,
     currentEvents: [],
-    eventInstance: {
+    eventInstance: INITIAL_EVENTS /*{
       name: 'event1',
       description: 'some event',
       date_info: '12.03.2022 15:00 - 13.03.2022 03:00'
-    },
+    }*/,
     groupInstances: [
       {name: 'group1', status: 'a'}, 
       {name: 'group2', status: 'm'}, 
@@ -40,7 +49,7 @@ export default class DemoApp extends React.Component {
       {name: 'group19', status: 'm'}
     ]
   }
-
+ 
   render() {
     return (
       <div className='demo-app' style={{
@@ -53,6 +62,7 @@ export default class DemoApp extends React.Component {
         <CalendarHeader page="/Calendar"/>
         <div className='demo-app-main'>
           <FullCalendar
+          ref={this.calendar}
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
               left: 'prev,next today',
@@ -65,9 +75,9 @@ export default class DemoApp extends React.Component {
             selectMirror={true}
             dayMaxEvents={true}
             weekends={this.state.weekendsVisible}
-            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+            initialEvents={/*INITIAL_EVENTS*/this.state.eventInstance} // alternatively, use the `events` setting to fetch from a feed
             select={this.handleDateSelect}
-            eventContent={renderEventContent} // custom render function
+            eventContent={this.renderEventContent} // custom render function
             eventClick={this.handleEventClick}
             eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
             /* you can update a remote database when these fire:
@@ -77,7 +87,7 @@ export default class DemoApp extends React.Component {
             */
           />
           <div className="Grouplist-wrapper" style={{float: "right"}}>
-            <GroupList groupInstances={this.state.groupInstances} />
+            <GroupList groupInstances={this.state.groupInstances} toParentHandler={this.handleCheckboxData} />
           </div>
         </div>
       </div>
@@ -91,6 +101,7 @@ export default class DemoApp extends React.Component {
   }
 
   handleDateSelect = (selectInfo) => {
+    window.myEventArray = (this.calendar.current.getApi().getEvents())
     let title = prompt('Please enter a new title for your event')
     let calendarApi = selectInfo.view.calendar
 
@@ -118,11 +129,26 @@ export default class DemoApp extends React.Component {
     this.setState({
       currentEvents: events
     })
+    console.log(events)
   }
+  handleCheckboxData = (data) => {
+    console.log(this.state.currentEvents)
+    let nEvents = this.state.currentEvents.map((e)=>{
+      let tmp=e
+      tmp.setProp('display',(data.find(element => {return element.name === e.extendedProps.eventGroupId && element.checked === true})!==undefined)?'auto':'none');
+      return tmp;
+    })
+    this.setState({groupInstances:data,eventInstance:nEvents})
+    console.log(this.state)
+    this.calendar.current.render()
+  }
+  renderEventContent(eventInfo) {
+  console.log(eventInfo.event.display)
+  if (eventInfo.event.extendedProps.eventGroupId === "group1") {
+   // eventInfo.event.setProp('display','none')
 
-}
-
-function renderEventContent(eventInfo) {
+  }
+  
   return (
     <>
       <b>{eventInfo.timeText}</b>
@@ -130,3 +156,6 @@ function renderEventContent(eventInfo) {
     </>
   )
 }
+
+}
+
