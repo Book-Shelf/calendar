@@ -1,4 +1,5 @@
 pobrać pliki z onedrive'a
+https://ujchmura-my.sharepoint.com/personal/daniel_schabikowski_student_uj_edu_pl/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdaniel%5Fschabikowski%5Fstudent%5Fuj%5Fedu%5Fpl%2FDocuments%2FCalendar
 
 npm install (Calendar)
 npm start //uruchomienie aplikacji
