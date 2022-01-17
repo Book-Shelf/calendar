@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 const JWT_KEY = '@#dfsad324dalkvoapf;faoskdmcap[wldap[wldsa;,cawe@#%!@#DA';
 
-const mongodbURL = 'mongodb://localhost:27017/register'; //you have to install mongoDB and host on localhost
+const mongodbURL = 'mongodb+srv://blog1:1234@cluster0.34o8a.mongodb.net/dbtest?retryWrites=true&w=majority'; //you have to install mongoDB and host on localhost
 mongoose.connect(mongodbURL,{useNewUrlParser: true, useUnifiedTopology: true});
 
 router.post('/register', async function(req, res) {  
