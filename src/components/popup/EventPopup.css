@@ -1,24 +1,31 @@
-.kaput {
+.popup-wrapper {
   font-size: 12px;
 }
-.kaput > .header {
+
+.popup-content {
+  border-radius: 10px;
+}
+
+.popup-wrapper > .header {
   width: 100%;
   border-bottom: 1px solid gray;
   font-size: 18px;
   text-align: center;
   padding: 5px;
 }
-.kaput > .content {
+
+.popup-wrapper > .content {
   width: 100%;
   padding: 10px 5px;
 }
-.kaput > .actions {
+
+.popup-wrapper > .actions {
   width: 100%;
   padding: 10px 5px;
   margin: auto;
   text-align: center;
 }
-.kaput > .close {
+.popup-wrapper > .close {
   cursor: pointer;
   position: absolute;
   display: block;
@@ -30,4 +37,64 @@
   background: #ffffff;
   border-radius: 18px;
   border: 1px solid #cfcece;
+}
+
+/* .popup-wrapper > .button-popup  {
+  background-color: black;
+} */
+
+.button-popup {
+  font-size: 21px;
+  padding: 5px 20px;
+  border: 0;
+  background-color: #2C3E50;
+  color: #ffffff;
+  border-radius: 3px;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+
+.button-popup:hover {
+  background-color: #1e2b37;
+}
+
+.button-popup:focus {
+  outline: none;
+}
+
+.event-input {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+.event-in-title:focus, .event-in-desc:focus{
+  border: 1px solid #000000;
+  box-shadow: none;
+}
+
+.event-input > label {
+  font-weight: 600;
+  margin: 0;
+  padding: 5px;
+}
+
+.event-in-title, .event-in-desc {
+  font-size: 18px;
+  width: 50%;
+  padding: 1px;
+  margin-bottom: 10px;
+  border: 1px solid #c2C7d0;
+  overflow: auto;
+  border-radius: 5px;
+}
+
+
+.event-in-desc {
+  width: 67.5%;
+  font-size: 14px;
+  overflow: auto;
+  background-color: #f3f3f3;
+  box-shadow: none;
+  outline: none;
 }

@@ -17,9 +17,13 @@ export default function EventPopup(props) {
   const [groups, setGroups] = useState(filterGroups());
   const resetThenSet = (id) => {
     const temp = [...groups];
-
-    temp.forEach((item) => item.selected = false);
-    temp[id].selected = true;
+    temp.forEach((item) => {
+      item.selected = false;
+      
+      if (item.id === id) {
+        item.selected = true;
+      }
+    });
 
     setGroups(temp);
   }
@@ -52,25 +56,35 @@ export default function EventPopup(props) {
       nested
     >
       {close => (
-        <div className="kaput">
+        <div className="popup-wrapper">
           <button className="close" onClick={close}>
             &times;
           </button>
           <div className="header"> Create new event </div>
           <div className="content">
             {' '}
-            <input type="text" onChange={(e) => setTitle(e.target.value)} />
-            <input type="text" onChange={(e) => setDescription(e.target.value)} />
+            <form className="event-input">
+              <label htmlFor='ev-title'>Title</label>
+              <input id="ev-title" className="event-in-title" type="text" placeholder='Event Title' onChange={(e) => setTitle(e.target.value)} />
+              <label htmlFor='ev-desc'>Description</label>
+              <textarea id="ev-desc" className="event-in-desc" 
+                placeholder="Description..."
+                onChange={(e) => setDescription(e.target.value)}
+              ></textarea>
 
-            <Dropdown
-                    title="Select group"
-                    list={groups}
-                    resetThenSet={resetThenSet}
+              <label htmlFor='ev-group'>Group</label>
+              <div className='ev-group'>
+                <Dropdown
+                  title="Select group"
+                  list={groups}
+                  resetThenSet={resetThenSet}
                 />
+              </div>
+            </form>
           </div>
           <div className="actions">
             <button
-              className="button"
+              className="button-popup"
               onClick={() => {
                 props.setNewEvent({
                   title,
@@ -86,7 +100,7 @@ export default function EventPopup(props) {
             </button>
             
             <button
-              className="button"
+              className="button-popup button"
               onClick={() => {
                 setTitle('');
                 unselect();

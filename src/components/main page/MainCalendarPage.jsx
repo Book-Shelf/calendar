@@ -34,7 +34,7 @@ constructor(props){
       {id: 1, name: 'group2', status: 'm'}, 
       {id: 2, name: 'group3', status: 'u'}, 
       {id: 3, name: 'group4', status: 'u'}, 
-      {id: 4, name: 'group5', status: 'u'}
+      {id: 4, name: 'group5', status: 'a'}
     ]
   }
  
@@ -102,11 +102,10 @@ constructor(props){
   }
 
   createNewEvent = (data) => {
-    console.log("Create New event");
     let selectInfo = this.state.selectInfo;
     let calendarApi = selectInfo.view.calendar;
 
-    if (data.title) {
+    if (data.title && data.groupId) {
       calendarApi.addEvent({
         id: createEventId(),
         title: data.title,
@@ -152,7 +151,6 @@ constructor(props){
     let nEvents = this.state.currentEvents.map((e)=>{
       let tmp=e
       tmp.setProp('display',(data.find(element => {return element.name === e.extendedProps.eventGroupId && element.checked === true})!==undefined)?'auto':'none');
-      console.log(tmp)
       return tmp;
     })
     this.setState({groupInstances:data,eventInstance:nEvents})

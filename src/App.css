@@ -1,3 +1,7 @@
+button {
+  transition: all 250ms ease-in-out;
+}
+
 .basicHeader {
   height: 48px;
 }
