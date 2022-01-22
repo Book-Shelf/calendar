@@ -6,7 +6,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import CalendarHeader from "../CalendarHeader";
 import GroupList from "../group_list/GroupList";
-import EventPreview from "../event/EventPreview";
+import EventPopup from '../popup/EventPopup'
 
 export default class DemoApp extends React.Component {
 constructor(props){
@@ -20,7 +20,9 @@ constructor(props){
   });
 }
   state = {
+    popupOpen: false,
     weekendsVisible: true,
+    selectInfo: null,
     currentEvents: [],
     eventInstance: INITIAL_EVENTS /*{
       name: 'event1',
@@ -28,25 +30,11 @@ constructor(props){
       date_info: '12.03.2022 15:00 - 13.03.2022 03:00'
     }*/,
     groupInstances: [
-      {name: 'group1', status: 'a'}, 
-      {name: 'group2', status: 'm'}, 
-      {name: 'group3', status: 'u'}, 
-      {name: 'group4', status: 'u'}, 
-      {name: 'group5', status: 'u'}, 
-      {name: 'group6', status: 'a'}, 
-      {name: 'group7', status: 'u'}, 
-      {name: 'group8', status: 'm'}, 
-      {name: 'group9', status: 'm'}, 
-      {name: 'group10', status: 'm'}, 
-      {name: 'group11', status: 'a'}, 
-      {name: 'group12', status: 'm'}, 
-      {name: 'group13', status: 'u'}, 
-      {name: 'group14', status: 'u'}, 
-      {name: 'group15', status: 'u'}, 
-      {name: 'group16', status: 'a'}, 
-      {name: 'group17', status: 'u'}, 
-      {name: 'group18', status: 'm'}, 
-      {name: 'group19', status: 'm'}
+      {id: 0, name: 'group1', status: 'a'}, 
+      {id: 1, name: 'group2', status: 'm'}, 
+      {id: 2, name: 'group3', status: 'u'}, 
+      {id: 3, name: 'group4', status: 'u'}, 
+      {id: 4, name: 'group5', status: 'u'}
     ]
   }
  
@@ -89,6 +77,12 @@ constructor(props){
           <div className="Grouplist-wrapper" style={{float: "right"}}>
             <GroupList groupInstances={this.state.groupInstances} toParentHandler={this.handleCheckboxData} />
           </div>
+          <EventPopup 
+            trigger={this.state.popupOpen} 
+            onClose={this.onPopupClose} 
+            setNewEvent={this.createNewEvent}
+            groups={this.state.groupInstances}
+          />
         </div>
       </div>
     )
@@ -100,22 +94,43 @@ constructor(props){
     })
   }
 
-  handleDateSelect = (selectInfo) => {
-    window.myEventArray = (this.calendar.current.getApi().getEvents())
-    let title = prompt('Please enter a new title for your event')
-    let calendarApi = selectInfo.view.calendar
 
-    calendarApi.unselect() // clear date selection
+  onPopupClose = () => {
+    this.setState({
+      popupOpen : false,
+    })
+  }
 
-    if (title) {
+  createNewEvent = (data) => {
+    console.log("Create New event");
+    let selectInfo = this.state.selectInfo;
+    let calendarApi = selectInfo.view.calendar;
+
+    if (data.title) {
       calendarApi.addEvent({
         id: createEventId(),
-        title,
+        title: data.title,
+        description: data.description,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
+        eventGroupId: data.groupId,
         allDay: selectInfo.allDay
       })
     }
+
+    this.setState({
+      selectInfo: null
+    })
+  }
+
+  handleDateSelect = (selectInfo) => {
+    window.myEventArray = (this.calendar.current.getApi().getEvents())
+    this.setState({
+      popupOpen : true,
+      selectInfo: selectInfo
+    })
+    let calendarApi = selectInfo.view.calendar;
+    calendarApi.unselect() // clear date selection
   }
 
   handleEventClick = (clickInfo) => {
@@ -131,17 +146,19 @@ constructor(props){
     })
     console.log(events)
   }
+
   handleCheckboxData = (data) => {
     console.log(this.state.currentEvents)
     let nEvents = this.state.currentEvents.map((e)=>{
       let tmp=e
       tmp.setProp('display',(data.find(element => {return element.name === e.extendedProps.eventGroupId && element.checked === true})!==undefined)?'auto':'none');
+      console.log(tmp)
       return tmp;
     })
     this.setState({groupInstances:data,eventInstance:nEvents})
-    console.log(this.state)
     this.calendar.current.render()
   }
+
   renderEventContent(eventInfo) {
   console.log(eventInfo.event.display)
   if (eventInfo.event.extendedProps.eventGroupId === "group1") {
