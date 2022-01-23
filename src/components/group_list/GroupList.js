@@ -1,5 +1,7 @@
 import React from "react";
 import GroupPlaque from "./GroupPlaque";
+import { Button } from "react-bootstrap";
+import { preventDefault } from "@fullcalendar/react";
 
 export default function GroupList(props) {
 	const [checked, setChecked] = React.useState(
@@ -15,26 +17,45 @@ export default function GroupList(props) {
 		props.toParentHandler(nc);
 	};
 
+	const handleAddGroupClick = () => {
+		const name = prompt("Enter group name: ");
+        let newChecked = Array.from(checked);
+        newChecked.push({id: checked.lastIndex+1, name: name, status: 'a'})
+        setChecked(newChecked);
+	};
+
 	return (
 		<div
 			style={{
 				overflow: "auto",
 				height: `Calc(100vh - 48px)`,
 				width: "auto",
-				float: "left",
 				backgroundColor: "#C71F28",
 			}}
 		>
-			{checked.map((groupInstance, index) => {
-				return (
-					<GroupPlaque
-						key={index}
-						groupInstance={groupInstance}
-						onChange={() => handleChange(index)}
-						checked={checked[index]}
-					/>
-				);
-			})}
+			<div style={{padding: "5px"}}>
+				{checked.map((groupInstance, index) => {
+					return (
+						<GroupPlaque
+							key={index}
+							groupInstance={groupInstance}
+							onChange={() => handleChange(index)}
+							checked={checked[index]}
+						/>
+					);
+				})}
+			</div>
+			<div style={{ padding: "5px" }}>
+				<Button
+					style={{ width: "100%" }}
+					className="btn btn-light"
+					onClick={() => {
+						handleAddGroupClick();
+					}}
+				>
+					Dodaj grupę
+				</Button>
+			</div>
 		</div>
 	);
 }

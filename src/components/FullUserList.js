@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CalendarHeader from "./CalendarHeader.js";
 
-function FullUserList() {
+function FullUserList(props) {
 	let [membersState, setMembers] = useState({
 		members: [
 			{ nick: "Szymek123", email: "xd@dd.com", role: "Administrator" },

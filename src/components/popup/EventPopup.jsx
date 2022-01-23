@@ -116,7 +116,7 @@ export default function EventPopup(props) {
               </Row>
             </form>
           </div>
-          <div className="actions">
+          <div style={{float: "left", marginTop: "20px", marginLeft: "14px", marginBottom: "20px"}}>
             <button
               className="button-popup"
               onClick={() => {
@@ -136,6 +136,7 @@ export default function EventPopup(props) {
             
             <button
               className="button-popup button"
+              style={{marginLeft: "20px"}}
               onClick={() => {
                 setTitle('');
                 unselect();
