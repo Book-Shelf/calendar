@@ -7,7 +7,10 @@ import { INITIAL_EVENTS, createEventId } from './event-utils'
 import CalendarHeader from "../CalendarHeader";
 import GroupList from "../group_list/GroupList";
 import EventPopup from '../popup/EventPopup'
-import randomColor from 'randomcolor'
+import Button from "react-bootstrap/Button";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+import { Card } from 'react-bootstrap'
 
 export default class DemoApp extends React.Component {
 constructor(props){
@@ -20,6 +23,7 @@ constructor(props){
     element.display="auto";
   });
 }
+
   state = {
     popupOpen: false,
     weekendsVisible: true,
@@ -31,6 +35,11 @@ constructor(props){
       date_info: '12.03.2022 15:00 - 13.03.2022 03:00'
     }*/,
     colors: [{id: 0, name: 'red'}, {id: 1, name: 'green'}, {id: 2, name: 'blue'}],
+    tooltip: false,
+    eventTitle: "",
+    eventDescription: "",
+    eventStart: "",
+    eventEnd: "",
     groupInstances: [
       {id: 0, name: 'group1', status: 'a'}, 
       {id: 1, name: 'group2', status: 'm'}, 
@@ -39,7 +48,7 @@ constructor(props){
       {id: 4, name: 'group5', status: 'a'}
     ]
   }
- 
+
   render() {
     return (
       <div className='demo-app' style={{
@@ -49,6 +58,18 @@ constructor(props){
 				left: "0",
 				margin: "0",
 			}}>
+        {this.state.tooltip && (
+          <div style={{position: "absolute", top: "50%", left: "50%", marginRight: "-50%", transform: "translate(-50%, -50%)", zIndex: "100"}}>
+            <Card>
+              <Card.Body>
+                <Card.Title>{this.state.eventTitle}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">Start: {this.state.eventStart}<br/> End: {this.state.eventEnd}</Card.Subtitle>
+                <hr className="mt-2 mb-3"/>
+                <Card.Text style={{fontStyle: "italic"}}>{this.state.eventDescription}</Card.Text>
+              </Card.Body>
+            </Card>
+          </div>
+        )}
         <CalendarHeader page="/Calendar"/>
         <div className='demo-app-main'>
           <FullCalendar
@@ -71,6 +92,8 @@ constructor(props){
             eventClick={this.handleEventClick}
             eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
             eventColor='red'
+            eventMouseEnter={(event) => this.onEventHover(event)}
+            eventMouseLeave={(event) => this.onEventHoverExit(event)}
             /* you can update a remote database when these fire:
             eventAdd={function(){}}
             eventChange={function(){}}
@@ -90,6 +113,35 @@ constructor(props){
         </div>
       </div>
     )
+  }
+
+  onEventHover = (event) => {
+
+    let tmpStart = formatDate(event.event.start, {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    })
+    let tmpEnd = formatDate(event.event.end, {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    })
+    this.setState({
+      tooltip: true,
+      eventTitle: event.event.title,
+      eventDescription: event.event.extendedProps.description || "No description",
+      eventStart: tmpStart,
+      eventEnd: tmpEnd || "Rest of the day"
+    })
+  }
+
+  onEventHoverExit = (event) => {
+    this.setState({tooltip: false})
   }
 
   handleWeekendsToggle = () => {
