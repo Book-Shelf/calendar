@@ -15,7 +15,7 @@ class Dropdown extends React.Component {
     toggleList = () => {
         this.setState(prevState => ({
             isListOpen: !prevState.isListOpen
-        }))
+        }), this.props.updateList)
     }
 
     selectItem = (item) => {

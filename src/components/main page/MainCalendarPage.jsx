@@ -101,7 +101,11 @@ constructor(props){
             */
           />
           <div className="Grouplist-wrapper" style={{float: "right"}}>
-            <GroupList groupInstances={this.state.groupInstances} toParentHandler={this.handleCheckboxData} />
+            <GroupList 
+              groupInstances={this.state.groupInstances}
+              toParentHandler={this.handleCheckboxData}
+              addNewGroup={this.handleNewGroup}
+            />
           </div>
           <EventPopup 
             trigger={this.state.popupOpen} 
@@ -147,6 +151,13 @@ constructor(props){
   handleWeekendsToggle = () => {
     this.setState({
       weekendsVisible: !this.state.weekendsVisible
+    })
+  }
+
+  handleNewGroup = (newGroupInstances) => {
+    console.log(this.state.groupInstances)
+    this.setState({
+      groupInstances: newGroupInstances
     })
   }
 

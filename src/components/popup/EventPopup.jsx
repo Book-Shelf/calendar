@@ -103,6 +103,7 @@ export default function EventPopup(props) {
                   title="Select group"
                   list={groups}
                   resetThenSet={resetThenSet}
+                  updateList={() => setGroups(filterGroups())}
                   
                 />
               </div>
@@ -111,6 +112,7 @@ export default function EventPopup(props) {
                   title="Select color"
                   list={colors}
                   resetThenSet={colorResetAndSet}
+                  updateList={() => console.log("jep")}
                 />
               </div>
               </Row>

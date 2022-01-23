@@ -19,9 +19,13 @@ export default function GroupList(props) {
 
 	const handleAddGroupClick = () => {
 		const name = prompt("Enter group name: ");
-        let newChecked = Array.from(checked);
-        newChecked.push({id: checked.lastIndex+1, name: name, status: 'a'})
-        setChecked(newChecked);
+
+		if (name) {
+			let newChecked = Array.from(props.groupInstances);
+			newChecked.push({id: newChecked.length, name: name, status: 'a', selected: false, checked: true})
+			props.addNewGroup(newChecked);
+			setChecked(newChecked);
+		}
 	};
 
 	return (
@@ -53,7 +57,7 @@ export default function GroupList(props) {
 						handleAddGroupClick();
 					}}
 				>
-					Dodaj grupę
+					Create Group
 				</Button>
 			</div>
 		</div>
