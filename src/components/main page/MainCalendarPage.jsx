@@ -7,6 +7,7 @@ import { INITIAL_EVENTS, createEventId } from './event-utils'
 import CalendarHeader from "../CalendarHeader";
 import GroupList from "../group_list/GroupList";
 import EventPopup from '../popup/EventPopup'
+import randomColor from 'randomcolor'
 
 export default class DemoApp extends React.Component {
 constructor(props){
@@ -29,6 +30,7 @@ constructor(props){
       description: 'some event',
       date_info: '12.03.2022 15:00 - 13.03.2022 03:00'
     }*/,
+    colors: [{id: 0, name: 'red'}, {id: 1, name: 'green'}, {id: 2, name: 'blue'}],
     groupInstances: [
       {id: 0, name: 'group1', status: 'a'}, 
       {id: 1, name: 'group2', status: 'm'}, 
@@ -68,6 +70,7 @@ constructor(props){
             eventContent={this.renderEventContent} // custom render function
             eventClick={this.handleEventClick}
             eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
+            eventColor='red'
             /* you can update a remote database when these fire:
             eventAdd={function(){}}
             eventChange={function(){}}
@@ -82,6 +85,7 @@ constructor(props){
             onClose={this.onPopupClose} 
             setNewEvent={this.createNewEvent}
             groups={this.state.groupInstances}
+            colors={this.state.colors}
           />
         </div>
       </div>
@@ -113,12 +117,13 @@ constructor(props){
         start: selectInfo.startStr,
         end: selectInfo.endStr,
         eventGroupId: data.groupId,
-        allDay: selectInfo.allDay
+        allDay: selectInfo.allDay,
+        color: data.color
       })
     }
-
+    
     this.setState({
-      selectInfo: null
+      selectInfo: null,
     })
   }
 
