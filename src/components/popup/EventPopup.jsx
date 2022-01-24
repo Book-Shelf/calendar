@@ -12,8 +12,7 @@ export default function EventPopup(props) {
 
     return filltered
   }
-
-  const [colors, setColor] = useState(props.colors)
+  
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [groups, setGroups] = useState(filterGroups());
@@ -28,18 +27,6 @@ export default function EventPopup(props) {
     });
 
     setGroups(temp);
-  }
-
-  const colorResetAndSet = (id) => {
-    const temp = [...colors];
-    temp.forEach((item) => {
-      item.selected = false;
-      if(item.id === id) {
-        item.selected = true;
-      }
-    });
-
-    setColor(temp);
   }
 
   const unselect = () =>  {
@@ -62,10 +49,10 @@ export default function EventPopup(props) {
   }
 
   const getColorId = () => {
-    let id = '';
-    colors.forEach((item) => {
-      if(item.selected) {
-        id = item.name
+    let id = ""
+    groups.forEach((item) => {
+      if (item.selected) {
+        id = item.color
       }
     })
 
@@ -105,14 +92,6 @@ export default function EventPopup(props) {
                   resetThenSet={resetThenSet}
                   updateList={() => setGroups(filterGroups())}
                   
-                />
-              </div>
-              <div style={{marginLeft: "20px"}}>
-                <Dropdown
-                  title="Select color"
-                  list={colors}
-                  resetThenSet={colorResetAndSet}
-                  updateList={() => console.log("jep")}
                 />
               </div>
               </Row>

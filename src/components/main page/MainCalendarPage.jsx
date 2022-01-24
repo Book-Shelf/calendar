@@ -7,9 +7,6 @@ import { INITIAL_EVENTS, createEventId } from './event-utils'
 import CalendarHeader from "../CalendarHeader";
 import GroupList from "../group_list/GroupList";
 import EventPopup from '../popup/EventPopup'
-import Button from "react-bootstrap/Button";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 import { Card } from 'react-bootstrap'
 
 export default class DemoApp extends React.Component {
@@ -34,18 +31,17 @@ constructor(props){
       description: 'some event',
       date_info: '12.03.2022 15:00 - 13.03.2022 03:00'
     }*/,
-    colors: [{id: 0, name: 'red'}, {id: 1, name: 'green'}, {id: 2, name: 'blue'}],
     tooltip: false,
     eventTitle: "",
     eventDescription: "",
     eventStart: "",
     eventEnd: "",
     groupInstances: [
-      {id: 0, name: 'group1', status: 'a'}, 
-      {id: 1, name: 'group2', status: 'm'}, 
-      {id: 2, name: 'group3', status: 'u'}, 
-      {id: 3, name: 'group4', status: 'u'}, 
-      {id: 4, name: 'group5', status: 'a'}
+      {id: 0, name: 'group1', status: 'a', color: "#ff0000"}, 
+      {id: 1, name: 'group2', status: 'm', color: "#ff0000"}, 
+      {id: 2, name: 'group3', status: 'u', color: "#222344"}, 
+      {id: 3, name: 'group4', status: 'u', color: "#ff0000"}, 
+      {id: 4, name: 'group5', status: 'a', color: "#ff0000"}
     ]
   }
 
@@ -105,6 +101,7 @@ constructor(props){
               groupInstances={this.state.groupInstances}
               toParentHandler={this.handleCheckboxData}
               addNewGroup={this.handleNewGroup}
+              handleChangeColor={this.handleChangedColor}
             />
           </div>
           <EventPopup 
@@ -112,7 +109,6 @@ constructor(props){
             onClose={this.onPopupClose} 
             setNewEvent={this.createNewEvent}
             groups={this.state.groupInstances}
-            colors={this.state.colors}
           />
         </div>
       </div>
@@ -154,8 +150,23 @@ constructor(props){
     })
   }
 
+  handleChangedColor = (groupInstancesNewColor, groupId, color) => {
+    
+    this.state.currentEvents.map(item => {
+      if (item.extendedProps.eventGroupId === groupId) {
+        item._def.ui.backgroundColor = color;
+        item._def.ui.borderColor = color;
+        return item 
+      }
+      return item
+    });
+
+    this.setState({
+      groupInstances: groupInstancesNewColor
+    }, () => console.log(this.state.groupInstances));
+  }
+
   handleNewGroup = (newGroupInstances) => {
-    console.log(this.state.groupInstances)
     this.setState({
       groupInstances: newGroupInstances
     })
@@ -171,6 +182,7 @@ constructor(props){
   createNewEvent = (data) => {
     let selectInfo = this.state.selectInfo;
     let calendarApi = selectInfo.view.calendar;
+    console.log(data)
 
     if (data.title && data.groupId) {
       calendarApi.addEvent({
@@ -225,7 +237,7 @@ constructor(props){
   }
 
   renderEventContent(eventInfo) {
-  console.log(eventInfo.event.display)
+  // console.log(eventInfo.event.display)
   if (eventInfo.event.extendedProps.eventGroupId === "group1") {
    // eventInfo.event.setProp('display','none')
 

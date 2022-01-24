@@ -4,6 +4,7 @@ import "./GroupPlaque.css";
 
 export default function GroupPlaque(props) {
 	const [checked, setChecked] = React.useState(props.checked);
+	const [color, setColor] = React.useState(props.groupInstance.color)
 	return (
 		<div style={{ padding: 2 }}>
 			<header>
@@ -24,9 +25,6 @@ export default function GroupPlaque(props) {
 					{props.groupInstance.status}
 				</div>
 				<div className="Plaque-container">
-					{/* <span>
-						<input type="color" id="colorPicker"/>
-					</span> */}
 					<div>
 						<input
 							name={props.groupInstance.name}
@@ -41,7 +39,16 @@ export default function GroupPlaque(props) {
 						/>
 					</div>
 					<div className="colorPicker-wrapper">
-						<input className="ble" type="color" id="colorPicker" width="5px"/>
+						<input className="ble"
+							type="color"
+							id="colorPicker"
+							width="5px"
+							value={color}
+							onChange={(e) => {
+								setColor(e.target.value)
+								props.handleChangeColor(props.groupInstance, e.target.value)
+							}}
+						/>
 					</div>
 					<div style={{ float: "left", margin: 10 }}>
 						<Link to="FullUserList">

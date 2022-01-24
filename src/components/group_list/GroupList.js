@@ -1,7 +1,6 @@
 import React from "react";
 import GroupPlaque from "./GroupPlaque";
 import { Button } from "react-bootstrap";
-import { preventDefault } from "@fullcalendar/react";
 
 export default function GroupList(props) {
 	const [checked, setChecked] = React.useState(
@@ -22,11 +21,19 @@ export default function GroupList(props) {
 
 		if (name) {
 			let newChecked = Array.from(props.groupInstances);
-			newChecked.push({id: newChecked.length, name: name, status: 'a', selected: false, checked: true})
+			newChecked.push({id: newChecked.length, name: name, status: 'a', selected: false, checked: true, color:"#ff0000"})
 			props.addNewGroup(newChecked);
 			setChecked(newChecked);
 		}
 	};
+
+	const handleNewColor = (group, color) => {
+		let temp = Array.from(props.groupInstances);
+		temp[group.id].color = color
+		props.handleChangeColor(temp, group.name, color);
+	}
+
+	// console.log(props.groupInstances)
 
 	return (
 		<div
@@ -45,6 +52,7 @@ export default function GroupList(props) {
 							groupInstance={groupInstance}
 							onChange={() => handleChange(index)}
 							checked={checked[index]}
+							handleChangeColor={handleNewColor}
 						/>
 					);
 				})}
