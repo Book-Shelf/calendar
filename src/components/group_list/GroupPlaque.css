@@ -1,0 +1,34 @@
+.Plaque-container {
+    display: flex;
+}
+
+.colorPicker-wrapper {
+    max-width: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.colorPicker-wrapper input {
+    min-width: 0px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.ble::-webkit-color-swatch {
+    border-radius: 50%;
+    border: 0 solid #000;
+}
+
+.ble::-moz-color-swatch {
+    border-radius: 50%;
+    border: 0 solid #000;
+}
+
+.ble:focus {
+    box-shadow: none;
+}

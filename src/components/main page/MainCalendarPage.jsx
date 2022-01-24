@@ -91,7 +91,7 @@ constructor(props){
             eventContent={this.renderEventContent} // custom render function
             eventClick={this.handleEventClick}
             eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
-            eventColor='red'
+            eventColor='blue'
             eventMouseEnter={(event) => this.onEventHover(event)}
             eventMouseLeave={(event) => this.onEventHoverExit(event)}
             /* you can update a remote database when these fire:
@@ -211,7 +211,6 @@ constructor(props){
     this.setState({
       currentEvents: events
     })
-    console.log(events)
   }
 
   handleCheckboxData = (data) => {
