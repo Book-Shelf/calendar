@@ -8,7 +8,7 @@ import CalendarHeader from "../CalendarHeader";
 import GroupList from "../group_list/GroupList";
 import EventPopup from '../popup/EventPopup';
 import { Button, Card, Row } from 'react-bootstrap';
-import "./MainCalendarPage.css";
+// import "./MainCalendarPage.css";
 
 export default class DemoApp extends React.Component {
   constructor(props) {
