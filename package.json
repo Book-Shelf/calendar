@@ -2,6 +2,7 @@
   "name": "my_app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Book-Shelf.github.io/calendar",
   "dependencies": {
     "@fullcalendar/daygrid": "^5.10.1",
     "@fullcalendar/interaction": "^5.10.1",
